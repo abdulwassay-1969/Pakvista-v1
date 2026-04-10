@@ -1,0 +1,173 @@
+export type District = {
+  name: string;
+  slug: string;
+  image: string; // Corresponds to the id in placeholder-images.json
+};
+
+export type Province = {
+  name: string;
+  slug: string;
+  districts: District[];
+};
+
+export const provinces: Province[] = [
+
+  {
+    name: 'Balochistan',
+    slug: 'balochistan',
+    districts: [
+      { name: 'Quetta', slug: 'quetta', image: 'district-quetta' },
+      { name: 'Gwadar', slug: 'gwadar', image: 'district-gwadar' },
+      { name: 'Turbat', slug: 'turbat', image: 'district-turbat' },
+      { name: 'Khuzdar', slug: 'khuzdar', image: 'district-khuzdar' },
+      { name: 'Chaman', slug: 'chaman', image: 'district-chaman' },
+      { name: 'Zhob', slug: 'zhob', image: 'district-zhob' },
+      { name: 'Ziarat', slug: 'ziarat', image: 'district-ziarat' },
+    ],
+  },
+  {
+    name: 'Gilgit-Baltistan',
+    slug: 'gilgit-baltistan',
+    districts: [
+      { name: 'Hunza', slug: 'hunza', image: 'district-hunza' },
+      { name: 'Skardu', slug: 'skardu', image: 'district-skardu' },
+      { name: 'Diamer', slug: 'diamer', image: 'district-diamer' },
+      { name: 'Shigar', slug: 'shigar', image: 'district-shigar' },
+      { name: 'Ghanche', slug: 'ghanche', image: 'district-ghanche' },
+      { name: 'Kharmang', slug: 'kharmang', image: 'district-kharmang' },
+      { name: 'Gilgit', slug: 'gilgit', image: 'district-gilgit' },
+    ],
+  },
+  {
+    name: 'Azad Kashmir',
+    slug: 'azad-kashmir',
+    districts: [
+      { name: 'Muzaffarabad', slug: 'muzaffarabad', image: 'district-muzaffarabad' },
+    ],
+  },
+  {
+    name: 'Islamabad Capital Territory',
+    slug: 'islamabad-capital-territory',
+    districts: [
+      { name: 'Islamabad', slug: 'islamabad', image: 'district-islamabad' },
+    ],
+  },
+  {
+    name: 'Khyber Pakhtunkhwa',
+    slug: 'khyber-pakhtunkhwa',
+    districts: [
+      { name: 'Peshawar', slug: 'peshawar', image: 'district-peshawar' },
+      { name: 'Swat', slug: 'swat', image: 'district-swat' },
+      { name: 'Chitral', slug: 'chitral', image: 'district-chitral' },
+      { name: 'Abbottabad', slug: 'abbottabad', image: 'district-abbottabad' },
+      { name: 'Mansehra', slug: 'mansehra', image: 'district-mansehra' },
+      { name: 'Dir', slug: 'dir', image: 'district-dir' },
+      { name: 'Bannu', slug: 'bannu', image: 'district-bannu' },
+      { name: 'Dera Ismail Khan', slug: 'dera-ismail-khan', image: 'district-dera-ismail-khan' },
+    ],
+  },
+  {
+    name: 'Punjab',
+    slug: 'punjab',
+    districts: [
+      { name: 'Lahore', slug: 'lahore', image: 'district-lahore' },
+      { name: 'Rawalpindi', slug: 'rawalpindi', image: 'district-rawalpindi' },
+      { name: 'Faisalabad', slug: 'faisalabad', image: 'district-faisalabad' },
+      { name: 'Multan', slug: 'multan', image: 'district-multan' },
+      { name: 'Gujranwala', slug: 'gujranwala', image: 'district-gujranwala' },
+      { name: 'Sialkot', slug: 'sialkot', image: 'district-sialkot' },
+      { name: 'Bahawalpur', slug: 'bahawalpur', image: 'district-bahawalpur' },
+      { name: 'Sargodha', slug: 'sargodha', image: 'district-sargodha' },
+      { name: 'Sheikhupura', slug: 'sheikhupura', image: 'district-sheikhupura' },
+    ],
+  },
+  {
+    name: 'Sindh',
+    slug: 'sindh',
+    districts: [
+      { name: 'Karachi', slug: 'karachi', image: 'district-karachi' },
+      { name: 'Hyderabad', slug: 'hyderabad', image: 'district-hyderabad' },
+      { name: 'Sukkur', slug: 'sukkur', image: 'district-sukkur' },
+      { name: 'Larkana', slug: 'larkana', image: 'district-larkana' },
+      { name: 'Mirpurkhas', slug: 'mirpurkhas', image: 'district-mirpurkhas' },
+      { name: 'Thatta', slug: 'thatta', image: 'district-thatta' },
+      { name: 'Badin', slug: 'badin', image: 'district-badin' },
+    ],
+  },
+];
+
+
+export const cities = [
+  { name: 'Karachi', lat: 24.86, lon: 67.01 },
+  { name: 'Lahore', lat: 31.55, lon: 74.34 },
+  { name: 'Faisalabad', lat: 31.42, lon: 73.08 },
+  { name: 'Rawalpindi', lat: 33.6, lon: 73.07 },
+  { name: 'Gujranwala', lat: 32.16, lon: 74.19 },
+  { name: 'Peshawar', lat: 34.0, lon: 71.58 },
+  { name: 'Multan', lat: 30.2, lon: 71.47 },
+  { name: 'Hyderabad', lat: 25.38, lon: 68.37 },
+  { name: 'Islamabad', lat: 33.72, lon: 73.09 },
+  { name: 'Quetta', lat: 30.19, lon: 67.01 },
+  { name: 'Bahawalpur', lat: 29.4, lon: 71.68 },
+  { name: 'Sargodha', lat: 32.08, lon: 72.67 },
+  { name: 'Sialkot', lat: 32.5, lon: 74.53 },
+  { name: 'Sukkur', lat: 27.7, lon: 68.86 },
+  { name: 'Larkana', lat: 27.56, lon: 68.22 },
+  { name: 'Sheikhupura', lat: 31.71, lon: 73.98 },
+  { name: 'Rahim Yar Khan', lat: 28.42, lon: 70.3 },
+  { name: 'Jhang', lat: 31.27, lon: 72.32 },
+  { name: 'Dera Ghazi Khan', lat: 30.06, lon: 70.63 },
+  { name: 'Gujrat', lat: 32.57, lon: 74.08 },
+  { name: 'Sahiwal', lat: 30.67, lon: 73.11 },
+  { name: 'Wah Cantonment', lat: 33.77, lon: 72.75 },
+  { name: 'Mardan', lat: 34.2, lon: 72.05 },
+  { name: 'Kasur', lat: 31.12, lon: 74.45 },
+  { name: 'Okara', lat: 30.8, lon: 73.45 },
+  { name: 'Mingora', lat: 34.78, lon: 72.36 },
+  { name: 'Nawabshah', lat: 26.25, lon: 68.41 },
+  { name: 'Chiniot', lat: 31.72, lon: 72.98 },
+  { name: 'Kotri', lat: 25.36, lon: 68.31 },
+  { name: 'Kamoke', lat: 31.97, lon: 74.22 },
+  { name: 'Hafizabad', lat: 32.07, lon: 73.69 },
+  { name: 'Sadiqabad', lat: 28.31, lon: 70.13 },
+  { name: 'Mirpur Khas', lat: 25.53, lon: 69.01 },
+  { name: 'Burewala', lat: 30.16, lon: 72.65 },
+  { name: 'Kohat', lat: 33.58, lon: 71.44 },
+  { name: 'Khanewal', lat: 30.3, lon: 71.93 },
+  { name: 'Dera Ismail Khan', lat: 31.83, lon: 70.9 },
+  { name: 'Turbat', lat: 26.0, lon: 63.05 },
+  { name: 'Muzaffargarh', lat: 30.07, lon: 71.19 },
+  { name: 'Abbottabad', lat: 34.15, lon: 73.22 },
+  { name: 'Mandi Bahauddin', lat: 32.59, lon: 73.49 },
+  { name: 'Shikarpur', lat: 27.96, lon: 68.64 },
+  { name: 'Jacobabad', lat: 28.28, lon: 68.45 },
+  { name: 'Jhelum', lat: 32.93, lon: 73.73 },
+  { name: 'Khanpur', lat: 28.65, lon: 70.66 },
+  { name: 'Khairpur', lat: 27.53, lon: 68.76 },
+  { name: 'Khuzdar', lat: 27.8, lon: 66.62 },
+  { name: 'Pakpattan', lat: 30.34, lon: 73.39 },
+  { name: 'Hub', lat: 24.99, lon: 66.89 },
+  { name: 'Daska', lat: 32.32, lon: 74.35 },
+  { name: 'Gojra', lat: 31.15, lon: 72.68 },
+  { name: 'Dadu', lat: 26.73, lon: 67.78 },
+  { name: 'Muridke', lat: 31.8, lon: 74.25 },
+  { name: 'Bahawalnagar', lat: 29.99, lon: 73.25 },
+  { name: 'Samundri', lat: 31.06, lon: 72.96 },
+  { name: 'Tando Allahyar', lat: 25.46, lon: 68.72 },
+  { name: 'Tando Adam', lat: 25.77, lon: 68.66 },
+  { name: 'Jaranwala', lat: 31.33, lon: 73.42 },
+  { name: 'Chishtian', lat: 29.8, lon: 72.86 },
+  { name: 'Muzaffarabad', lat: 34.37, lon: 73.47 },
+  { name: 'Attock', lat: 33.77, lon: 72.36 },
+  { name: 'Vehari', lat: 30.04, lon: 72.35 },
+  { name: 'Kot Abdul Malik', lat: 31.63, lon: 74.22 },
+  { name: 'Ferozwala', lat: 31.7, lon: 74.1 },
+  { name: 'Chakwal', lat: 32.93, lon: 72.85 },
+  { name: 'Gwadar', lat: 25.12, lon: 62.32 },
+  { name: 'Swat', lat: 35.22, lon: 72.42 },
+  { name: 'Ziarat', lat: 30.38, lon: 67.73 },
+  { name: 'Hunza', lat: 36.31, lon: 74.65 },
+  { name: 'Gilgit', lat: 35.92, lon: 74.31 },
+  { name: 'Skardu', lat: 35.3, lon: 75.63 },
+  { name: 'Chitral', lat: 35.85, lon: 71.79 },
+];

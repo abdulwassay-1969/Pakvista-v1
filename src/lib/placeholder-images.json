@@ -1,0 +1,262 @@
+{
+  "placeholderImages": [
+    {
+      "id": "hero-mountains",
+      "description": "Scenic view of a majestic mountain range at sunrise.",
+      "imageUrl": "https://images.unsplash.com/photo-1611080402167-ed75bae6df32?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxtb3VudGFpbiUyMGxhbmRzY2FwZXxlbnwwfHx8fDE3NjU5MzU0ODN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "mountain landscape"
+    },
+    {
+      "id": "district-hunza",
+      "description": "The beautiful Hunza Valley with mountains in the background.",
+      "imageUrl": "https://images.unsplash.com/photo-1586348943529-beaae6c28db9?w=1080",
+      "imageHint": "baltit fort hunza"
+    },
+    {
+      "id": "district-skardu",
+      "description": "Shangrila Resort in Skardu, a famous tourist spot.",
+      "imageUrl": "https://images.unsplash.com/photo-1563102961-6c178ade4b5c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxsYWtlJTIwcmVzb3J0fGVufDB8fHx8MTc2NTk4OTY0MHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "lake resort"
+    },
+    {
+      "id": "district-gilgit",
+      "description": "A view of Gilgit city with surrounding mountains.",
+      "imageUrl": "https://images.unsplash.com/photo-1747992873324-c2be11c2a4e5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxjaXR5JTIwbW91bnRhaW5zfGVufDB8fHx8MTc2NTk4OTY0MHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "city mountains"
+    },
+    {
+      "id": "district-astore",
+      "description": "Lush green plains of Astore valley.",
+      "imageUrl": "https://images.unsplash.com/photo-1541637593725-923467404d17?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxncmVlbiUyMHZhbGxleXxlbnwwfHx8fDE3NjU5MTQ3MTl8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "green valley"
+    },
+    {
+      "id": "district-lahore",
+      "description": "Badshahi Mosque in Lahore, an architectural marvel.",
+      "imageUrl": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1080",
+      "imageHint": "badshahi mosque lahore"
+    },
+    {
+      "id": "district-multan",
+      "description": "The shrine of Shah Rukn-e-Alam in Multan.",
+      "imageUrl": "https://images.unsplash.com/photo-1616666720738-0f4dbf0d3e9f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxzaHJpbmUlMjBhcmNoaXRlY3R1cmV8ZW58MHx8fHwxNzY1OTg5NjQwfDA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageHint": "shrine architecture"
+    },
+    {
+      "id": "district-bahawalpur",
+      "description": "The magnificent Derawar Fort in the Cholistan Desert.",
+      "imageUrl": "https://images.unsplash.com/photo-1612352401871-7a7febd973b1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxkZXNlcnQlMjBmb3J0fGVufDB8fHx8MTc2NTk4OTY0MHww&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageHint": "desert fort"
+    },
+    {
+      "id": "district-karachi",
+      "description": "Frere Hall in Karachi, a building from the British colonial era.",
+      "imageUrl": "https://images.unsplash.com/photo-1683553238308-9e33dcda0986?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxjb2xvbmlhbCUyMGJ1aWxkaW5nfGVufDB8fHx8MTc2NTk4OTY0MHww&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageHint": "colonial building"
+    },
+    {
+      "id": "district-hyderabad",
+      "description": "The historic Pacco Qillo fort in Hyderabad.",
+      "imageUrl": "https://images.unsplash.com/photo-1634630487113-14fdb677d2a5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxhbmNpZW50JTIwZm9ydHxlbnwwfHx8fDE3NjU5ODk2NDF8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageHint": "ancient fort"
+    },
+    {
+      "id": "district-thatta",
+      "description": "Makli Necropolis, a UNESCO World Heritage Site in Thatta.",
+      "imageUrl": "https://images.unsplash.com/photo-1685369250486-053a9bf47faa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxhbmNpZW50JTIwdG9tYnN8ZW58MHx8fHwxNzY1OTg5NjQwfDA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageHint": "ancient tombs"
+    },
+    {
+      "id": "district-peshawar",
+      "description": "The historic Mahabat Khan Mosque in Peshawar.",
+      "imageUrl": "https://images.unsplash.com/photo-1560740365-ba43f34cb52e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxtb3NxdWUlMjBpbnRlcmlvcnxlbnwwfHx8fDE3NjU5MDcwNjN8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageHint": "mosque interior"
+    },
+    {
+      "id": "district-swat",
+      "description": "The lush green Swat Valley, known as the Switzerland of Pakistan.",
+      "imageUrl": "https://images.unsplash.com/photo-1501854140801-50d01698950b?w=1080",
+      "imageHint": "swat valley"
+    },
+    {
+      "id": "district-chitral",
+      "description": "A view of Tirich Mir, the highest mountain of the Hindu Kush range.",
+      "imageUrl": "https://images.unsplash.com/photo-1622828830814-88e510e51ac9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxzbm93eSUyMHBlYWt8ZW58MHx8fHwxNzY1OTc1NzYwfDA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageHint": "snowy peak"
+    },
+    {
+      "id": "district-quetta",
+      "description": "Hanna Lake near Quetta, a popular picnic spot.",
+      "imageUrl": "https://images.unsplash.com/photo-1604440095301-4ec2f9230155?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxtb3VudGFpbiUyMGxha2V8ZW58MHx8fHwxNzY1OTg4NzM4fDA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageHint": "mountain lake"
+    },
+    {
+      "id": "district-gwadar",
+      "description": "The stunning sunset view at Gwadar's coastline.",
+      "imageUrl": "https://images.unsplash.com/photo-1518022525094-218670c9b745?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxiZWFjaCUyMHN1bnNldHxlbnwwfHx8fDE3NjU5MzAwMTd8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageHint": "beach sunset"
+    },
+    {
+      "id": "district-ziarat",
+      "description": "Quaid-e-Azam Residency in Ziarat.",
+      "imageUrl": "https://images.unsplash.com/photo-1632257415236-ad9973d4d5df?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8aGlzdG9yaWMlMjBob3VzZXxlbnwwfHx8fDE3NjU5ODk2NDB8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageHint": "historic house"
+    },
+    {
+      "id": "district-islamabad",
+      "description": "The Faisal Mosque in Islamabad against the backdrop of Margalla Hills.",
+      "imageUrl": "https://images.unsplash.com/photo-1644337544049-08fb5ac82628?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxtb2Rlcm4lMjBtb3NxdWV8ZW58MHx8fHwxNzY1OTg5NjQwfDA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageHint": "modern mosque"
+    },
+    {
+      "id": "district-muzaffarabad",
+      "description": "A view of Muzaffarabad city with Neelum river.",
+      "imageUrl": "https://images.unsplash.com/photo-1604689846011-fabb50d9369c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxjaXR5JTIwcml2ZXJ8ZW58MHx8fHwxNzY1OTg0ODUzfDA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageHint": "city river"
+    },
+    {
+      "id": "tourism-intro-image",
+      "description": "A diverse group of tourists enjoying a scenic view in Pakistan.",
+      "imageUrl": "https://images.unsplash.com/photo-1710026319923-c05daa32555f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHx0b3VyaXN0cyUyMG1vdW50YWluc3xlbnwwfHx8fDE3NjU5ODk2NDB8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageHint": "tourists mountains"
+    },
+    {
+      "id": "district-rawalpindi",
+      "description": "A bustling street in Rawalpindi.",
+      "imageUrl": "https://images.unsplash.com/photo-1617121346253-43ef95179ac9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjaXR5JTIwc3RyZWV0fGVufDB8fHx8MTc2NTk4MjMyMXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "city street"
+    },
+    {
+      "id": "district-faisalabad",
+      "description": "The clock tower of Faisalabad.",
+      "imageUrl": "https://images.unsplash.com/photo-1600715764645-cb752c23db20?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxjbG9jayUyMHRvd2VyfGVufDB8fHx8MTc2NTk5MzAxN3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "clock tower"
+    },
+    {
+      "id": "district-gujranwala",
+      "description": "A food street in Gujranwala.",
+      "imageUrl": "https://images.unsplash.com/photo-1570365473297-4a454f76ff0e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxmb29kJTIwc3RyZWV0fGVufDB8fHx8MTc2NTk5MzAxN3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "food street"
+    },
+    {
+      "id": "district-sialkot",
+      "description": "Iqbal Manzil, the birthplace of Allama Iqbal in Sialkot.",
+      "imageUrl": "https://images.unsplash.com/photo-1765594284858-28079e3489f0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxoaXN0b3JpYyUyMGJ1aWxkaW5nfGVufDB8fHx8MTc2NTk5MzAxN3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "historic building"
+    },
+    {
+      "id": "district-sargodha",
+      "description": "A view of Kirana Hills in Sargodha.",
+      "imageUrl": "https://images.unsplash.com/photo-1692685820422-61b43dff3fca?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxyb2NreSUyMGhpbGxzfGVufDB8fHx8MTc2NTk5MzAxN3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "rocky hills"
+    },
+    {
+      "id": "district-sheikhupura",
+      "description": "Hiran Minar in Sheikhupura.",
+      "imageUrl": "https://images.unsplash.com/photo-1677940259567-9963cf534d21?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxoaXN0b3JpYyUyMHRvd2VyfGVufDB8fHx8MTc2NTk5MzAxOHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "historic tower"
+    },
+    {
+      "id": "district-sukkur",
+      "description": "The Sukkur Barrage on the Indus River.",
+      "imageUrl": "https://images.unsplash.com/photo-1730473313858-b9aa9186f1d4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxyaXZlciUyMGJhcnJhZ2V8ZW58MHx8fHwxNzY1OTkzMDE3fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "river barrage"
+    },
+    {
+      "id": "district-larkana",
+      "description": "The ancient ruins of Mohenjo-daro near Larkana.",
+      "imageUrl": "https://images.unsplash.com/photo-1717518215340-0d1184c493fa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxhbmNpZW50JTIwcnVpbnN8ZW58MHx8fHwxNzY1OTM1NzMwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "ancient ruins"
+    },
+    {
+      "id": "district-mirpurkhas",
+      "description": "A mango orchard in Mirpurkhas.",
+      "imageUrl": "https://images.unsplash.com/photo-1654593946302-de04c0796651?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxtYW5nbyUyMG9yY2hhcmR8ZW58MHx8fHwxNzY1OTkzMDE3fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "mango orchard"
+    },
+    {
+      "id": "district-badin",
+      "description": "A coastal view of Badin district.",
+      "imageUrl": "https://images.unsplash.com/photo-1758918726778-dca54300fd40?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8Y29hc3RhbCUyMHZpZXd8ZW58MHx8fHwxNzY1OTkzMDE3fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "coastal view"
+    },
+    {
+      "id": "district-abbottabad",
+      "description": "A view of the green hills of Abbottabad.",
+      "imageUrl": "https://images.unsplash.com/photo-1544013030-dac22dc4546a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxncmVlbiUyMGhpbGxzfGVufDB8fHx8MTc2NTk5MzAxN3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "green hills"
+    },
+    {
+      "id": "district-mansehra",
+      "description": "A scenic view of Kaghan Valley in Mansehra.",
+      "imageUrl": "https://images.unsplash.com/photo-1531932594968-e5e5e9dee95a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxtb3VudGFpbiUyMHZhbGxleXxlbnwwfHx8fDE3NjU5OTMwMTd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "mountain valley"
+    },
+    {
+      "id": "district-dir",
+      "description": "A wooden mosque in Dir.",
+      "imageUrl": "https://images.unsplash.com/photo-1760882703215-be017ffe263b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHx3b29kZW4lMjBtb3NxdWV8ZW58MHx8fHwxNzY1OTkzMDE3fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "wooden mosque"
+    },
+    {
+      "id": "district-bannu",
+      "description": "A street scene in Bannu.",
+      "imageUrl": "https://images.unsplash.com/photo-1453413453658-27fec8f43f29?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxjaXR5JTIwc3RyZWV0fGVufDB8fHx8MTc2NTk4MjMyMXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "city street"
+    },
+    {
+      "id": "district-dera-ismail-khan",
+      "description": "A view of the Indus River at Dera Ismail Khan.",
+      "imageUrl": "https://images.unsplash.com/photo-1667572426575-47d304943e39?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxyaXZlciUyMHZpZXd8ZW58MHx8fHwxNzY1OTcyMDQyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "river view"
+    },
+    {
+      "id": "district-diamer",
+      "description": "A view of Nanga Parbat from Diamer.",
+      "imageUrl": "https://images.unsplash.com/photo-1491986981770-cb1eee867c54?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxtb3VudGFpbiUyMHBlYWt8ZW58MHx8fHwxNzY1OTU1ODAyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "mountain peak"
+    },
+    {
+      "id": "district-shigar",
+      "description": "Shigar Fort in the Shigar Valley.",
+      "imageUrl": "https://images.unsplash.com/photo-1707524545291-e76f27a5cd88?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxoaXN0b3JpYyUyMGZvcnR8ZW58MHx8fHwxNzY1OTUyNDU4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "historic fort"
+    },
+    {
+      "id": "district-ghanche",
+      "description": "The cold desert of Ghanche.",
+      "imageUrl": "https://images.unsplash.com/photo-1712019784050-abcb8febb02c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxjb2xkJTIwZGVzZXJ0fGVufDB8fHx8MTc2NTk5MzAxN3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "cold desert"
+    },
+    {
+      "id": "district-kharmang",
+      "description": "A village in the Kharmang valley.",
+      "imageUrl": "https://images.unsplash.com/photo-1668033192213-2186ca720803?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8bW91bnRhaW4lMjB2aWxsYWdlfGVufDB8fHx8MTc2NTk2ODk5OXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "mountain village"
+    },
+    {
+      "id": "district-turbat",
+      "description": "A date farm in Turbat.",
+      "imageUrl": "https://images.unsplash.com/photo-1761245048927-c0ae008d52bd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxkYXRlJTIwZmFybXxlbnwwfHx8fDE3NjU5OTMwMTd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "date farm"
+    },
+    {
+      "id": "district-khuzdar",
+      "description": "The rugged landscape of Khuzdar.",
+      "imageUrl": "https://images.unsplash.com/photo-1685564205071-df3bd88c1d51?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxydWdnZWQlMjBsYW5kc2NhcGV8ZW58MHx8fHwxNzY1OTkzMDE3fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "rugged landscape"
+    },
+    {
+      "id": "district-chaman",
+      "description": "The Khojak Tunnel near Chaman.",
+      "imageUrl": "https://images.unsplash.com/photo-1657337988483-815bd2dc0677?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxyYWlsd2F5JTIwdHVubmVsfGVufDB8fHx8MTc2NTk5MzAxN3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "railway tunnel"
+    },
+    {
+      "id": "district-zhob",
+      "description": "A view of the Zhob River.",
+      "imageUrl": "https://images.unsplash.com/photo-1654182146345-39c224a44dec?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxyaXZlciUyMHZpZXd8ZW58MHx8fHwxNzY1OTcyMDQyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "river view"
+    }
+  ]
+}
