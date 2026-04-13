@@ -118,6 +118,7 @@ const plannerPrompt = ai.definePrompt({
 
 const PLANNER_MODEL_FALLBACKS = [
   'googleai/gemini-2.0-flash',
+  'googleai/gemini-1.5-flash',
   'googleai/gemini-2.5-flash-lite',
   'googleai/gemini-2.0-flash-lite',
 ] as const;

@@ -6,8 +6,7 @@ function googleGenAiApiKey(): string | undefined {
   return (
     process.env.GEMINI_API_KEY ||
     process.env.GOOGLE_API_KEY ||
-    process.env.GOOGLE_GENAI_API_KEY ||
-    "AIzaSyDl688E9exQGoFEUJ2Ta_DIu9gs0vSpyq0"
+    process.env.GOOGLE_GENAI_API_KEY
   );
 }
 
