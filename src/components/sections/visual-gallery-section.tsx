@@ -5,7 +5,7 @@ import {
   Upload, X, Camera, MapPin, User, ChevronLeft,
   ChevronRight, Trash2, ZoomIn, ImagePlus, Star, Loader2
 } from 'lucide-react';
-import ImageKit from '@imagekit/javascript';
+import { upload } from '@imagekit/javascript';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -69,12 +69,12 @@ function restoreFocusToOpener(
   }
 }
 
-// ─── Direct ImageKit Browser Instance ──────────────────────────────────
-const imagekit = new ImageKit({
+// ─── Initialized ImageKit Configuration ───────────────────────────────
+const IK_CONFIG = {
   publicKey: process.env.NEXT_PUBLIC_IMAGEKIT_PUBLIC_KEY || '',
   urlEndpoint: process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT || '',
-  authenticationEndpoint: '/api/imagekit-auth',
-});
+  authenticationEndpoint: `${typeof window !== 'undefined' ? window.location.origin : ''}/api/imagekit-auth`,
+};
 
 // ─── Upload Modal ──────────────────────────────────────────────────────────
 function UploadModal({
@@ -122,15 +122,11 @@ function UploadModal({
     setLoading(true);
     try {
       // 1. Upload DIRECTLY to ImageKit from browser (Bypass Vercel 4.5MB limit)
-      const uploadResponse = await new Promise<any>((resolve, reject) => {
-        imagekit.upload({
-          file: preview,
-          fileName: `photo-${Date.now()}`,
-          folder: "/gallery"
-        }, (err, result) => {
-          if (err) reject(err);
-          else resolve(result);
-        });
+      const uploadResponse = await upload({
+        ...IK_CONFIG,
+        file: preview,
+        fileName: `photo-${Date.now()}`,
+        folder: "/gallery"
       });
 
       // 2. Save only URL and Metadata to Firestore
