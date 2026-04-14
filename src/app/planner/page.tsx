@@ -49,17 +49,6 @@ const interests = [
   { id: 'relaxation', label: 'Relaxation & Wellness' },
 ];
 
-const mustVisitOptions = [
-  'Badshahi Mosque',
-  'Hunza Valley',
-  'Swat Valley',
-  'Faisal Mosque',
-  'Mohenjo-daro',
-  'Skardu',
-  'Neelum Valley',
-  'Gwadar Coast',
-];
-
 const formSchema = z.object({
   destination: z.string().min(1, 'Please select a destination.'),
   duration: z.coerce
@@ -79,9 +68,6 @@ const formSchema = z.object({
   transport: z.string().min(1, 'Please select preferred transport.'),
   accommodation: z.string().min(1, 'Please select accommodation style.'),
   currency: z.string().min(1, 'Please select currency.'),
-  mustVisit: z.array(z.string()).default([]),
-  mustVisitOther: z.string().optional(),
-  dietaryNeeds: z.string().optional(),
   notes: z.string().optional(),
 });
 
@@ -112,9 +98,6 @@ function PlannerPageContent() {
       transport: 'road-trip',
       accommodation: 'comfortable-hotel',
       currency: 'PKR',
-      mustVisit: [],
-      mustVisitOther: '',
-      dietaryNeeds: '',
       notes: '',
     },
   });
@@ -126,14 +109,6 @@ function PlannerPageContent() {
         setPlan(null);
         const result = await getTravelPlan({
           ...data,
-          mustVisit: [
-            ...data.mustVisit,
-            ...(data.mustVisitOther || '')
-              .split(',')
-              .map((item) => item.trim())
-              .filter(Boolean),
-          ],
-          dietaryNeeds: data.dietaryNeeds || 'None',
           notes: data.notes || 'None',
         });
         setPlan(result);
@@ -201,9 +176,6 @@ function PlannerPageContent() {
       transport: p.transport,
       accommodation: p.accommodation,
       currency: p.currency,
-      mustVisit: [...p.mustVisit],
-      mustVisitOther: p.mustVisitOther ?? '',
-      dietaryNeeds: p.dietaryNeeds ?? '',
       notes: p.notes ?? '',
     });
   }, [presetParam, form]);
@@ -496,73 +468,7 @@ function PlannerPageContent() {
                     )}
                   />
 
-                  <div className="space-y-6 rounded-xl bg-muted/30 p-3 md:p-4">
-                    <FormField
-                      control={form.control}
-                      name="mustVisit"
-                      render={() => (
-                        <FormItem className="min-w-0">
-                          <FormLabel>Must-Visit Places</FormLabel>
-                          <FormDescription>Pick from popular options below.</FormDescription>
-                          <div className="mt-2 grid grid-cols-1 gap-x-4 gap-y-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-                            {mustVisitOptions.map((place) => (
-                              <FormField
-                                key={place}
-                                control={form.control}
-                                name="mustVisit"
-                                render={({ field }) => (
-                                  <FormItem className="flex min-w-0 items-start gap-2.5 space-y-0">
-                                    <FormControl className="mt-0.5 shrink-0">
-                                      <Checkbox
-                                        checked={field.value?.includes(place)}
-                                        onCheckedChange={(checked) => {
-                                          if (checked) return field.onChange([...field.value, place]);
-                                          return field.onChange(field.value.filter((value) => value !== place));
-                                        }}
-                                      />
-                                    </FormControl>
-                                    <FormLabel className="cursor-pointer font-normal leading-snug">
-                                      {place}
-                                    </FormLabel>
-                                  </FormItem>
-                                )}
-                              />
-                            ))}
-                          </div>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6">
-                      <FormField
-                        control={form.control}
-                        name="mustVisitOther"
-                        render={({ field }) => (
-                          <FormItem className="min-w-0">
-                            <FormLabel>Other Must-Visit Places</FormLabel>
-                            <FormControl>
-                              <Input placeholder="e.g., Fairy Meadows, Murree Mall Road" {...field} />
-                            </FormControl>
-                            <FormDescription>Optional, comma-separated.</FormDescription>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                      <FormField
-                        control={form.control}
-                        name="dietaryNeeds"
-                        render={({ field }) => (
-                          <FormItem className="min-w-0">
-                            <FormLabel>Dietary Preferences</FormLabel>
-                            <FormControl>
-                              <Input placeholder="e.g., Vegetarian, Halal only, No spicy food" {...field} />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                    </div>
-                  </div>
+
 
                   <FormField
                     control={form.control}

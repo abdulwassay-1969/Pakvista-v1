@@ -33,8 +33,6 @@ const TravelPlannerInputSchema = z.object({
     .describe(
       'The budget for the trip (e.g., budget-friendly, mid-range, luxury).'
     ),
-  mustVisit: z.array(z.string()).describe('Places the traveler definitely wants to include.'),
-  dietaryNeeds: z.string().describe('Any food preference or dietary requirement.'),
   notes: z.string().describe('Additional custom notes or constraints.'),
 });
 export type TravelPlannerInput = z.infer<typeof TravelPlannerInputSchema>;
@@ -95,8 +93,6 @@ const plannerPrompt = ai.definePrompt({
     - Currency: {{{currency}}}
     - Interests: {{{interests}}}
     - Budget: {{{budget}}}
-    - Must Visit: {{{mustVisit}}}
-    - Dietary Needs: {{{dietaryNeeds}}}
     - Notes: {{{notes}}}
 
     CRITICAL — Preferred Transport (field "transport") must match ALL of the following everywhere:
@@ -211,7 +207,7 @@ const plannerFlow = ai.defineFlow(
 
     const routeDist = await computePlannerRouteDistance(
       input.destination,
-      input.mustVisit ?? []
+      []
     );
     const effectiveKm =
       routeDist.waypoints.length >= 2
