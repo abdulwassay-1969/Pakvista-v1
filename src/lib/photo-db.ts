@@ -10,7 +10,7 @@ import {
   doc 
 } from "firebase/firestore";
 import { db } from "./firebase";
-import { imagekit } from "./imagekit";
+import { getImageKit } from "./imagekit";
 
 export type TravelerPhoto = {
     id: string;           
@@ -66,7 +66,7 @@ export async function deletePhoto(id: string, fileId?: string): Promise<void> {
 
         // 2. Delete from ImageKit if fileId is provided
         if (fileId) {
-            await imagekit.deleteFile(fileId);
+            await getImageKit().deleteFile(fileId);
         }
     } catch (e) {
         console.error("Failed to delete photo from ImageKit/Firestore", e);

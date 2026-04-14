@@ -1,9 +1,9 @@
 import { NextResponse } from 'next/server';
-import { imagekit } from '@/lib/imagekit';
+import { getImageKit } from '@/lib/imagekit';
 
 export async function GET() {
   try {
-    const authenticationParameters = imagekit.getAuthenticationParameters();
+    const authenticationParameters = getImageKit().getAuthenticationParameters();
     return NextResponse.json(authenticationParameters);
   } catch (error) {
     console.error('ImageKit auth error:', error);
