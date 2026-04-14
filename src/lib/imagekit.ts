@@ -10,7 +10,11 @@ export const getImageKit = () => {
     const urlEndpoint = (process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT || "").trim();
 
     if (!publicKey || !privateKey || !urlEndpoint) {
-      console.warn("⚠️ ImageKit environment variables are missing.");
+      const missing = [];
+      if (!publicKey) missing.push("Public Key");
+      if (!privateKey) missing.push("Private Key");
+      if (!urlEndpoint) missing.push("URL Endpoint");
+      console.error(`❌ ImageKit server config missing: ${missing.join(", ")}`);
     }
 
     imagekitInstance = new ImageKit({

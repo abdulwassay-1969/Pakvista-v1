@@ -2,17 +2,24 @@ import { initializeApp, getApps, getApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
-  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
-  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
-  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
-  measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
+  apiKey: (process.env.NEXT_PUBLIC_FIREBASE_API_KEY || "").trim(),
+  authDomain: (process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN || "").trim(),
+  projectId: (process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID || "").trim(),
+  storageBucket: (process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET || "").trim(),
+  messagingSenderId: (process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID || "").trim(),
+  appId: (process.env.NEXT_PUBLIC_FIREBASE_APP_ID || "").trim(),
+  measurementId: (process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID || "").trim(),
 };
 
 // Safety Check: Ensure the critical keys exist
 if (!firebaseConfig.apiKey || !firebaseConfig.projectId) {
-  console.error("❌ CRITICAL ERROR: Firebase API Key or Project ID is missing from environment variables.");
+  const missing = [];
+  if (!firebaseConfig.apiKey) missing.push("API_KEY");
+  if (!firebaseConfig.projectId) missing.push("PROJECT_ID");
+  console.error(`❌ CRITICAL ERROR: Firebase ${missing.join(" and ")} missing.`, {
+    usingProjectId: firebaseConfig.projectId || "UNDEFINED",
+    envValue: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID
+  });
 }
 
 // Initialize Firebase only once

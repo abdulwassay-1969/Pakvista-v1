@@ -9,6 +9,7 @@ import { upload } from '@imagekit/javascript';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import { IK_CONFIG } from '@/lib/imagekit';
 import {
   savePhoto, getAllPhotos, deletePhoto,
   type TravelerPhoto
@@ -120,8 +121,9 @@ function UploadModal({
       const { token, signature, expire } = await authResponse.json();
 
       // 2. Upload DIRECTLY to ImageKit from browser (Bypass Vercel 4.5MB limit)
-      // We use the modern 'upload' function from the SDK for reliability
-      const uploadResponse = await new ImageKit(IK_CONFIG).upload({
+      const uploadResponse = await upload({
+        publicKey: IK_CONFIG.publicKey,
+        urlEndpoint: IK_CONFIG.urlEndpoint,
         file: preview,
         fileName: `photo-${Date.now()}`,
         folder: "/gallery",
@@ -144,6 +146,7 @@ function UploadModal({
       onUploaded();
       onClose();
     } catch (err: any) {
+      console.error("Upload process failed:", err);
       setError(err.message || 'Failed to save photo. Please try again.');
     } finally {
       setLoading(false);
