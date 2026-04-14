@@ -73,7 +73,6 @@ function restoreFocusToOpener(
 const IK_CONFIG = {
   publicKey: process.env.NEXT_PUBLIC_IMAGEKIT_PUBLIC_KEY || '',
   urlEndpoint: process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT || '',
-  authenticationEndpoint: `${typeof window !== 'undefined' ? window.location.origin : ''}/api/imagekit-auth`,
 };
 
 // ─── Upload Modal ──────────────────────────────────────────────────────────
@@ -121,15 +120,24 @@ function UploadModal({
     if (!form.caption.trim()) { setError('Please add a caption.'); return; }
     setLoading(true);
     try {
-      // 1. Upload DIRECTLY to ImageKit from browser (Bypass Vercel 4.5MB limit)
+      // 1. Fetch authentication tokens from our own server
+      const authResponse = await fetch('/api/imagekit-auth');
+      if (!authResponse.ok) throw new Error("Failed to get upload authorization.");
+      const { token, signature, expire } = await authResponse.json();
+
+      // 2. Upload DIRECTLY to ImageKit from browser (Bypass Vercel 4.5MB limit)
       const uploadResponse = await upload({
-        ...IK_CONFIG,
+        publicKey: IK_CONFIG.publicKey,
+        urlEndpoint: IK_CONFIG.urlEndpoint,
         file: preview,
         fileName: `photo-${Date.now()}`,
-        folder: "/gallery"
+        folder: "/gallery",
+        token,
+        signature,
+        expire
       });
 
-      // 2. Save only URL and Metadata to Firestore
+      // 3. Save only URL and Metadata to Firestore
       await savePhoto({
         name: form.name.trim(),
         location: form.location.trim(),
