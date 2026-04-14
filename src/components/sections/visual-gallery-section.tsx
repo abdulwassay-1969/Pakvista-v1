@@ -113,7 +113,6 @@ function UploadModal({
     setLoading(true);
     try {
       await savePhoto({
-        id: `photo-${Date.now()}`,
         name: form.name.trim(),
         location: form.location.trim(),
         caption: form.caption.trim(),
@@ -297,7 +296,7 @@ function Lightbox({
   onClose: () => void;
   onPrev: () => void;
   onNext: () => void;
-  onDelete: (id: string) => void;
+  onDelete: (id: string, storagePath?: string) => void;
   returnFocusRef: RefObject<HTMLElement | null>;
 }) {
   const photo = photos[index];
@@ -384,7 +383,7 @@ function Lightbox({
         </div>
         {!isSeeded && (
           <button
-            onClick={() => { onDelete(photo.id); onClose(); }}
+            onClick={() => { onDelete(photo.id, photo.storagePath); onClose(); }}
             className="mt-3 text-red-400 hover:text-red-300 flex items-center gap-1 mx-auto text-sm transition-colors"
           >
             <Trash2 className="w-3.5 h-3.5" /> Remove photo
@@ -417,9 +416,9 @@ export default function VisualGallerySection() {
 
   useEffect(() => { loadPhotos(); }, [loadPhotos]);
 
-  const handleDelete = async (id: string) => {
+  const handleDelete = async (id: string, storagePath?: string) => {
     try {
-      await deletePhoto(id);
+      await deletePhoto(id, storagePath);
       setPhotos((prev) => prev.filter((p) => p.id !== id));
     } catch { }
   };
