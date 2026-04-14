@@ -38,11 +38,12 @@ export async function fetchWeatherData({ city }: WeatherInput): Promise<WeatherD
   // Use the API key from environment variables
   const apiKey = process.env.METEOBLUE_API_KEY;
 
-  console.log(`[Weather] Using API key: ${apiKey.substring(0, 4)}... (length: ${apiKey.length})`);
-
   if (!apiKey) {
+    console.warn("[Weather] Meteoblue API key is missing.");
     throw new Error('Meteoblue API key is not configured.');
   }
+
+  // console.log(`[Weather] Fetching for ${resolvedCity}...`);
 
   const url = `https://my.meteoblue.com/packages/basic-1h_basic-day?` +
               `lat=${lat}&lon=${lon}&` +
