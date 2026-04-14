@@ -25,30 +25,22 @@ export type TravelerPhoto = {
 
 const COLLECTION_NAME = "photos";
 
-export async function savePhoto(photo: Omit<TravelerPhoto, 'id' | 'dataUrl'> & { dataUrl: string }): Promise<void> {
+export async function savePhoto(photo: Omit<TravelerPhoto, 'id' | 'dataUrl' | 'storagePath'> & { url: string, fileId: string }): Promise<void> {
     try {
-        // 1. Upload to ImageKit
-        // ImageKit node SDK expects a string (base64 is fine), or a Buffer/Stream
-        const uploadResponse = await imagekit.upload({
-            file: photo.dataUrl, // base64 data URL
-            fileName: `photo-${Date.now()}`,
-            folder: "/gallery"
-        });
-
-        // 2. Save metadata to Firestore (keeping your existing DB)
+        // 1. Save metadata to Firestore (details provided by client)
         await addDoc(collection(db, COLLECTION_NAME), {
             name: photo.name,
             location: photo.location,
             caption: photo.caption,
-            dataUrl: uploadResponse.url,
-            storagePath: uploadResponse.fileId, // Use fileId for easier deletion
+            dataUrl: photo.url,
+            storagePath: photo.fileId,
             uploadedAt: photo.uploadedAt,
             fileSize: photo.fileSize,
             createdAt: new Date().toISOString()
         });
     } catch (e: any) {
-        console.error("ImageKit/Firestore Error:", e);
-        throw new Error(e.message || "Failed to upload photo to the new free storage.");
+        console.error("Firestore Error:", e);
+        throw new Error(e.message || "Failed to save photo details to database.");
     }
 }
 

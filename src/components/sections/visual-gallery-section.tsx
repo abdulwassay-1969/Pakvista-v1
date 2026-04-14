@@ -3,8 +3,9 @@
 import { useState, useEffect, useRef, useCallback, type RefObject } from 'react';
 import {
   Upload, X, Camera, MapPin, User, ChevronLeft,
-  ChevronRight, Trash2, ZoomIn, ImagePlus, Star
+  ChevronRight, Trash2, ZoomIn, ImagePlus, Star, Loader2
 } from 'lucide-react';
+import ImageKit from '@imagekit/javascript';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -68,6 +69,13 @@ function restoreFocusToOpener(
   }
 }
 
+// ─── Direct ImageKit Browser Instance ──────────────────────────────────
+const imagekit = new ImageKit({
+  publicKey: process.env.NEXT_PUBLIC_IMAGEKIT_PUBLIC_KEY || '',
+  urlEndpoint: process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT || '',
+  authenticationEndpoint: '/api/imagekit-auth',
+});
+
 // ─── Upload Modal ──────────────────────────────────────────────────────────
 function UploadModal({
   onClose,
@@ -113,18 +121,34 @@ function UploadModal({
     if (!form.caption.trim()) { setError('Please add a caption.'); return; }
     setLoading(true);
     try {
+      // 1. Upload DIRECTLY to ImageKit from browser (Bypass Vercel 4.5MB limit)
+      const uploadResponse = await new Promise<any>((resolve, reject) => {
+        imagekit.upload({
+          file: preview,
+          fileName: `photo-${Date.now()}`,
+          folder: "/gallery"
+        }, (err, result) => {
+          if (err) reject(err);
+          else resolve(result);
+        });
+      });
+
+      // 2. Save only URL and Metadata to Firestore
       await savePhoto({
         name: form.name.trim(),
         location: form.location.trim(),
         caption: form.caption.trim(),
-        dataUrl: preview,
+        url: uploadResponse.url,
+        fileId: uploadResponse.fileId,
         uploadedAt: new Date().toLocaleDateString('en-PK', { year: 'numeric', month: 'long', day: 'numeric' }),
         fileSize: fileInfo?.size ?? 0,
       });
+
       onUploaded();
       onClose();
-    } catch {
-      setError('Failed to save photo. Please try again.');
+    } catch (err: any) {
+      console.error("Upload Error:", err);
+      setError(err.message || 'Failed to save photo. Please try again.');
     } finally {
       setLoading(false);
     }
