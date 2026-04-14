@@ -9,9 +9,10 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import {
-  savePhoto, getAllPhotos, deletePhoto, formatFileSize,
+  savePhoto, getAllPhotos, deletePhoto,
   type TravelerPhoto
 } from '@/lib/photo-db';
+import { formatFileSize } from '@/lib/utils';
 
 // ─── Default seed images shown before any uploads ─────────────────────────
 const DEFAULT_PHOTOS: TravelerPhoto[] = [
