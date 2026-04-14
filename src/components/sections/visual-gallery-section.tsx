@@ -71,8 +71,8 @@ function restoreFocusToOpener(
 
 // ─── Initialized ImageKit Configuration ───────────────────────────────
 const IK_CONFIG = {
-  publicKey: process.env.NEXT_PUBLIC_IMAGEKIT_PUBLIC_KEY || '',
-  urlEndpoint: process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT || '',
+  publicKey: (process.env.NEXT_PUBLIC_IMAGEKIT_PUBLIC_KEY || '').trim(),
+  urlEndpoint: (process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT || '').trim(),
 };
 
 // ─── Upload Modal ──────────────────────────────────────────────────────────
@@ -120,12 +120,18 @@ function UploadModal({
     if (!form.caption.trim()) { setError('Please add a caption.'); return; }
     setLoading(true);
     try {
+      console.log("[IK-DEBUG] Starting upload process...");
+      console.log("[IK-DEBUG] Public Key:", IK_CONFIG.publicKey);
+      console.log("[IK-DEBUG] URL Endpoint:", IK_CONFIG.urlEndpoint);
+
       // 1. Fetch authentication tokens from our own server
       const authResponse = await fetch('/api/imagekit-auth');
       if (!authResponse.ok) throw new Error("Failed to get upload authorization.");
       const { token, signature, expire } = await authResponse.json();
+      console.log("[IK-DEBUG] Received Auth Tokens:", { token: token?.substring(0, 8) + '...', expire, signature: signature?.substring(0, 8) + '...' });
 
       // 2. Upload DIRECTLY to ImageKit from browser (Bypass Vercel 4.5MB limit)
+      console.log("[IK-DEBUG] Calling ImageKit upload function...");
       const uploadResponse = await upload({
         publicKey: IK_CONFIG.publicKey,
         urlEndpoint: IK_CONFIG.urlEndpoint,
@@ -136,6 +142,7 @@ function UploadModal({
         signature,
         expire
       });
+      console.log("[IK-DEBUG] Upload Success!", uploadResponse.url);
 
       // 3. Save only URL and Metadata to Firestore
       await savePhoto({

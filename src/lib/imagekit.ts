@@ -9,10 +9,14 @@ export const getImageKit = () => {
       // Return a dummy instance or handle error inside the caller
     }
     
+    const publicKey = (process.env.NEXT_PUBLIC_IMAGEKIT_PUBLIC_KEY || "").trim();
+    const privateKey = (process.env.IMAGEKIT_PRIVATE_KEY || "").trim();
+    const urlEndpoint = (process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT || "").trim();
+
     imagekitInstance = new ImageKit({
-      publicKey: process.env.NEXT_PUBLIC_IMAGEKIT_PUBLIC_KEY || "missing",
-      privateKey: process.env.IMAGEKIT_PRIVATE_KEY || "missing",
-      urlEndpoint: process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT || "missing",
+      publicKey: publicKey || "missing",
+      privateKey: privateKey || "missing",
+      urlEndpoint: urlEndpoint || "missing",
     });
   }
   return imagekitInstance;
