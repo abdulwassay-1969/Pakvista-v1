@@ -1,3 +1,5 @@
+'use server';
+
 import { 
   collection, 
   addDoc, 
@@ -7,51 +9,46 @@ import {
   deleteDoc, 
   doc 
 } from "firebase/firestore";
-import { 
-  ref, 
-  uploadString, 
-  getDownloadURL, 
-  deleteObject 
-} from "firebase/storage";
-import { db, storage } from "./firebase";
+import { db } from "./firebase";
+import { imagekit } from "./imagekit";
 
 export type TravelerPhoto = {
-    id: string;           // Firestore document ID or specific ID
-    name: string;         // uploader's name
-    location: string;     // e.g. "Hunza Valley"
+    id: string;           
+    name: string;         
+    location: string;     
     caption: string;
-    dataUrl: string;      // The permanent Firebase Storage URL
-    storagePath?: string; // The path in Firebase Storage (to make deletion easier)
+    dataUrl: string;      // This will now be the ImageKit URL
+    storagePath?: string; // This will now be the ImageKit FileID (for deletion)
     uploadedAt: string;
-    fileSize: number;     // in bytes
+    fileSize: number;     
 };
 
 const COLLECTION_NAME = "photos";
 
 export async function savePhoto(photo: Omit<TravelerPhoto, 'id' | 'dataUrl'> & { dataUrl: string }): Promise<void> {
     try {
-        // 1. Upload the base64 image to Firebase Storage
-        const photoId = `photo-${Date.now()}`;
-        const storageRef = ref(storage, `gallery/${photoId}`);
-        
-        // uploadString handles the dataUrl format (base64)
-        const snapshot = await uploadString(storageRef, photo.dataUrl, 'data_url');
-        const downloadUrl = await getDownloadURL(snapshot.ref);
+        // 1. Upload to ImageKit
+        // ImageKit node SDK expects a string (base64 is fine), or a Buffer/Stream
+        const uploadResponse = await imagekit.upload({
+            file: photo.dataUrl, // base64 data URL
+            fileName: `photo-${Date.now()}`,
+            folder: "/gallery"
+        });
 
-        // 2. Save metadata to Firestore
+        // 2. Save metadata to Firestore (keeping your existing DB)
         await addDoc(collection(db, COLLECTION_NAME), {
             name: photo.name,
             location: photo.location,
             caption: photo.caption,
-            dataUrl: downloadUrl,
-            storagePath: `gallery/${photoId}`,
+            dataUrl: uploadResponse.url,
+            storagePath: uploadResponse.fileId, // Use fileId for easier deletion
             uploadedAt: photo.uploadedAt,
             fileSize: photo.fileSize,
-            createdAt: new Date().toISOString() // for sorting
+            createdAt: new Date().toISOString()
         });
-    } catch (e) {
-        console.error("Failed to save photo to Firebase", e);
-        throw new Error("Could not save photo to the cloud.");
+    } catch (e: any) {
+        console.error("ImageKit/Firestore Error:", e);
+        throw new Error(e.message || "Failed to upload photo to the new free storage.");
     }
 }
 
@@ -65,23 +62,22 @@ export async function getAllPhotos(): Promise<TravelerPhoto[]> {
             ...(doc.data() as Omit<TravelerPhoto, 'id'>)
         }));
     } catch (e) {
-        console.error("Failed to fetch photos from Firebase", e);
+        console.error("Failed to fetch photos from Firestore", e);
         return [];
     }
 }
 
-export async function deletePhoto(id: string, storagePath?: string): Promise<void> {
+export async function deletePhoto(id: string, fileId?: string): Promise<void> {
     try {
         // 1. Delete from Firestore
         await deleteDoc(doc(db, COLLECTION_NAME, id));
 
-        // 2. Delete from Storage if path is provided
-        if (storagePath) {
-            const storageRef = ref(storage, storagePath);
-            await deleteObject(storageRef);
+        // 2. Delete from ImageKit if fileId is provided
+        if (fileId) {
+            await imagekit.deleteFile(fileId);
         }
     } catch (e) {
-        console.error("Failed to delete photo from Firebase", e);
+        console.error("Failed to delete photo from ImageKit/Firestore", e);
         throw new Error("Could not delete the photo.");
     }
 }
