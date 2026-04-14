@@ -35,9 +35,8 @@ export async function fetchWeatherData({ city }: WeatherInput): Promise<WeatherD
   const lon = cityData?.lon ?? 67.0011;
   const resolvedCity = cityData?.name ?? 'Karachi';
 
-  // Preferred: from .env.local → METEOBLUE_API_KEY=yourkey
-  // Fallback: hardcoded new key (for testing only — REMOVE before git commit!)
-  const apiKey = process.env.METEOBLUE_API_KEY ?? 'usLSv0zDRIhj4lGH';
+  // Use the API key from environment variables
+  const apiKey = process.env.METEOBLUE_API_KEY;
 
   console.log(`[Weather] Using API key: ${apiKey.substring(0, 4)}... (length: ${apiKey.length})`);
 
