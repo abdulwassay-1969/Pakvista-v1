@@ -16,15 +16,15 @@ const VIRTUAL_TOUR_VIDEOS: {
   /** Optional start time in seconds (e.g. &t=2m7s → 127) */
   start?: number;
 }[] = [
-  { id: "15W4PLDYDfw", label: "Featured tour 1", start: 127 },
-  { id: "3VX2ka0ak1E", label: "Featured tour 2" },
-  { id: "PQMAWhVtGqM", label: "Featured tour 3" },
-  { id: "ExyCpYVtJpU", label: "Featured tour 4" },
-  { id: "41RDQj0d24Q", label: "Featured tour 5" },
-  { id: "zepaVaOcLME", label: "Featured tour 6" },
-  { id: "VxZBUfC2j3E", label: "Featured tour 7" },
-  { id: "2B3nvBbmMnk", label: "Featured tour 8" },
-  { id: "eQ3tLm70p2g", label: "Featured tour 9" },
+  { id: "15W4PLDYDfw", label: "Hunza Valley Road Trip – Pakistan's Most Scenic Drive", start: 127 },
+  { id: "3VX2ka0ak1E", label: "Skardu – Gateway to K2 Base Camp" },
+  { id: "PQMAWhVtGqM", label: "Lahore – The Cultural Heart of Pakistan" },
+  { id: "ExyCpYVtJpU", label: "Fairy Meadows & Nanga Parbat Trek" },
+  { id: "41RDQj0d24Q", label: "Swat Valley – The Switzerland of Pakistan" },
+  { id: "zepaVaOcLME", label: "Gilgit-Baltistan – Land of Giants" },
+  { id: "VxZBUfC2j3E", label: "Kalash Valley – Ancient Culture of Chitral" },
+  { id: "2B3nvBbmMnk", label: "Deosai National Park – World's Highest Plateau" },
+  { id: "eQ3tLm70p2g", label: "Karachi to Gwadar – The Makran Coastal Highway" },
 ];
 
 /** [Pakistan Motorcycle Tour](https://www.youtube.com/playlist?list=PLSjc2o-bXB-r-pU3cOpLYfRXQQAum17Yl) — full playlist in one player */
