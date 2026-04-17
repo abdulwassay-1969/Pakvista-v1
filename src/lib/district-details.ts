@@ -292,7 +292,6 @@ const districtDetails: Record<string, DistrictDetail> = {
         ],
         gallery: [
             "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800",
-            "https://images.unsplash.com/photo-1565354148893-eee43a2e28e4?w=800",
             "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=800",
         ],
     },
