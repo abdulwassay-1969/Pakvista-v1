@@ -30,6 +30,8 @@ function getLoopDistance(index: number, active: number, total: number) {
   return Math.min(direct, total - direct);
 }
 
+const blurUrl = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mO8+v//fwAJaQOE+e1wFAAAAABJRU5ErkJggg==";
+
 export default function FeaturedDestinationsSection() {
   const [api, setApi] = useState<CarouselApi>();
   const [activeIndex, setActiveIndex] = useState(0);
@@ -51,21 +53,21 @@ export default function FeaturedDestinationsSection() {
   }, [api]);
 
   return (
-    <section className="py-16 md:py-24 bg-gradient-to-br from-slate-100 via-white to-lime-50">
+    <section className="py-20 md:py-32 bg-white">
       <div className="container mx-auto px-4">
-        <div className="mb-10 text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-primary font-headline md:text-4xl">
-            Featured Destinations
+        <div className="mb-16 text-center">
+          <h2 className="text-4xl font-extrabold tracking-tight text-slate-900 font-headline md:text-5xl">
+            Featured <span className="text-primary">Destinations</span>
           </h2>
-          <p className="mt-3 max-w-2xl mx-auto text-lg text-muted-foreground">
-            Discover the most captivating places Pakistan has to offer, with a highlight from each province.
+          <p className="mt-4 max-w-2xl mx-auto text-xl text-slate-600 font-medium">
+            Discover the most captivating places Pakistan has to offer, hand-picked for your next adventure.
           </p>
         </div>
 
         <div className="relative">
-          <div className="mb-4 flex justify-end">
-            <Button asChild variant="secondary" className="rounded-lg bg-white hover:bg-white/90">
-              <Link href="/#provinces">View All</Link>
+          <div className="mb-6 flex justify-end">
+            <Button asChild variant="outline" className="rounded-full border-slate-300 text-slate-700 hover:bg-primary hover:text-white hover:border-primary transition-colors">
+              <Link href="/map">View All Destinations</Link>
             </Button>
           </div>
 
@@ -80,58 +82,55 @@ export default function FeaturedDestinationsSection() {
                 const isOuter = distance === 2;
 
                 const scaleClass = isActive
-                  ? "scale-[1.1]"
+                  ? "scale-[1.08] shadow-2xl"
                   : isAdjacent
-                    ? "scale-95"
+                    ? "scale-95 shadow-lg"
                     : isOuter
-                      ? "scale-90"
-                      : "scale-[0.86]";
-                const opacityClass = isActive
-                  ? "opacity-100"
-                  : isAdjacent
-                    ? "opacity-85"
-                    : isOuter
-                      ? "opacity-70"
-                      : "opacity-55";
+                      ? "scale-90 opacity-70 cursor-pointer"
+                      : "scale-[0.85] opacity-40 cursor-pointer";
+                      
                 const zClass = isActive ? "z-30" : isAdjacent ? "z-20" : "z-10";
+                
                 return (
                   <CarouselItem
                     key={district.slug}
-                    className="pl-3 basis-[82%] sm:basis-[48%] lg:basis-1/5"
+                    className="pl-3 basis-[85%] sm:basis-[50%] lg:basis-[28%] py-8"
+                    onClick={() => api?.scrollTo(idx)}
                   >
-                    <Link
-                      href={`/districts/${district.slug}`}
-                      className={`group relative -mx-2 block transition-all duration-500 ${scaleClass} ${opacityClass} ${zClass}`}
+                    <div
+                      className={`group relative -mx-2 block transition-all duration-700 ease-out ${scaleClass} ${zClass}`}
                     >
-                      <article className="relative h-[280px] md:h-[330px] overflow-hidden rounded-2xl border border-white/20 shadow-none">
+                      <article className="relative h-[350px] md:h-[450px] overflow-hidden rounded-[2rem] border-0">
                         <Image
                           src={image.imageUrl}
                           alt={image.description}
                           data-ai-hint={image.imageHint}
                           fill
-                          className="object-cover transition-transform duration-500 group-hover:scale-105"
+                          className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                          placeholder="blur"
+                          blurDataURL={blurUrl}
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
-                        <div className="relative flex h-full flex-col justify-end p-5">
-                          <h4 className="text-xl font-bold text-white tracking-tight leading-tight">
+                        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent" />
+                        <div className="relative flex h-full flex-col justify-end p-8 text-white">
+                          <h4 className="text-3xl font-bold font-headline mb-3 tracking-tight drop-shadow-md">
                             {district.name}
                           </h4>
                           <Button
-                            variant="outline"
-                            size="sm"
-                            className="mt-3 w-fit rounded-md border-white/80 bg-transparent text-white hover:bg-white/20"
+                            asChild
+                            variant="secondary"
+                            className="w-fit rounded-full bg-white/20 backdrop-blur-md text-white border border-white/30 hover:bg-primary hover:border-primary hover:text-white transition-all shadow-lg"
                           >
-                            EXPLORE
+                            <Link href={`/districts/${district.slug}`}>EXPLORE</Link>
                           </Button>
                         </div>
                       </article>
-                    </Link>
+                    </div>
                   </CarouselItem>
                 );
               })}
             </CarouselContent>
-            <CarouselPrevious className="left-0 h-11 w-11 md:h-10 md:w-10 border-0 bg-lime-300 text-slate-800 hover:bg-lime-400" />
-            <CarouselNext className="right-0 h-11 w-11 md:h-10 md:w-10 border-0 bg-lime-300 text-slate-800 hover:bg-lime-400" />
+            <CarouselPrevious className="left-0 h-14 w-14 border border-slate-200 bg-white text-slate-800 hover:bg-primary hover:text-white hover:border-primary shadow-xl transition-colors" />
+            <CarouselNext className="right-0 h-14 w-14 border border-slate-200 bg-white text-slate-800 hover:bg-primary hover:text-white hover:border-primary shadow-xl transition-colors" />
           </Carousel>
         </div>
       </div>

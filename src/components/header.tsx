@@ -5,8 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import {
   Menu, Search, Home, Map,
-  ImageIcon, Compass, MapPin,
-  Camera, Phone, CloudSun, Bookmark,
+  ImageIcon, Compass, CloudSun, Target, BookOpen, Info
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet';
@@ -15,14 +14,12 @@ import Logo from './logo';
 
 const navLinks = [
   { href: '/', label: 'Home', icon: Home },
-  { href: '/#provinces', label: 'Provinces', icon: Map },
+  { href: '/#provinces', label: 'Provinces', icon: Compass },
+  { href: '/map', label: 'Map', icon: Map },
   { href: '/gallery', label: 'Gallery', icon: ImageIcon },
-  { href: '/saved-trips', label: 'Saved Trips', icon: Bookmark },
-  { href: '/planner', label: 'Smart Planner', icon: Compass },
-  { href: '/map', label: 'Map', icon: MapPin },
-  { href: '/virtual-tour', label: 'Virtual Tour', icon: Camera },
-  { href: '/contact', label: 'Contacts', icon: Phone },
   { href: '/weather', label: 'Weather', icon: CloudSun },
+  { href: '/blog', label: 'Blog', icon: BookOpen },
+  { href: '/about', label: 'About', icon: Info },
 ];
 
 export default function Header() {
@@ -86,23 +83,19 @@ export default function Header() {
                 {link.label}
               </Link>
             ))}
-            <div className="ml-2 pl-4 border-l border-white/10">
+            <div className="ml-4 pl-4 border-l border-foreground/10 flex items-center gap-4">
               <Button
                 asChild
-                variant="ghost"
-                size="icon"
                 className={cn(
-                  "rounded-full",
+                  "rounded-full font-bold shadow-md transition-all",
                   isScrolled
-                    ? "text-white hover:bg-white/10"
+                    ? "bg-primary text-white hover:bg-primary/90"
                     : isHomePage
-                      ? "text-white hover:bg-white/10"
-                      : "text-[#003D5B] hover:bg-[#74AFDB]/15"
+                      ? "bg-white text-primary hover:bg-neutral-100"
+                      : "bg-primary text-white hover:bg-primary/90"
                 )}
               >
-                <Link href="/map" aria-label="Open map page">
-                  <Search className="h-4 w-4" />
-                </Link>
+                <Link href="/planner">Plan Your Trip</Link>
               </Button>
             </div>
           </nav>

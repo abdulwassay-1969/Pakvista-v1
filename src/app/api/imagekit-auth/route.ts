@@ -7,7 +7,7 @@ export async function GET() {
   try {
     const ik = getImageKit();
     
-    // Check if the instance was properly initialized (not using "missing" placeholders)
+    // Check if the instance was properly initialized
     // @ts-ignore - access internal config for check
     const config = ik.options;
     if (config.publicKey === "missing" || config.privateKey === "missing") {
@@ -18,8 +18,8 @@ export async function GET() {
       );
     }
 
-    const authenticationParameters = ik.getAuthenticationParameters();
-    return NextResponse.json(authenticationParameters);
+    const authParameters = ik.getAuthenticationParameters();
+    return NextResponse.json(authParameters);
   } catch (error: any) {
     console.error('ImageKit auth error:', error);
     return NextResponse.json(

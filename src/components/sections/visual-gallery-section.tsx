@@ -5,11 +5,10 @@ import {
   Upload, X, Camera, MapPin, User, ChevronLeft,
   ChevronRight, Trash2, ZoomIn, ImagePlus, Star, Loader2
 } from 'lucide-react';
-import { upload } from '@imagekit/javascript';
+import { ImageKitProvider, Image, upload } from '@imagekit/next';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { IK_CONFIG } from '@/lib/imagekit';
 import {
   savePhoto, getAllPhotos, deletePhoto,
   type TravelerPhoto
@@ -120,10 +119,10 @@ function UploadModal({
       if (!authResponse.ok) throw new Error("Failed to get upload authorization.");
       const { token, signature, expire } = await authResponse.json();
 
-      // 2. Upload DIRECTLY to ImageKit from browser (Bypass Vercel 4.5MB limit)
+      // 2. Upload DIRECTLY to ImageKit from browser
       const uploadResponse = await upload({
-        publicKey: IK_CONFIG.publicKey,
-        urlEndpoint: IK_CONFIG.urlEndpoint,
+        publicKey: process.env.NEXT_PUBLIC_IMAGEKIT_PUBLIC_KEY!,
+        urlEndpoint: process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT!,
         file: preview,
         fileName: `photo-${Date.now()}`,
         folder: "/gallery",
@@ -450,21 +449,25 @@ export default function VisualGallerySection() {
   const allPhotos = photos;
 
   return (
-    <section className="py-16 md:py-24 bg-background">
-      <div className="container mx-auto px-4">
+    <ImageKitProvider 
+      urlEndpoint={process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT!}
+      publicKey={process.env.NEXT_PUBLIC_IMAGEKIT_PUBLIC_KEY!}
+    >
+      <section className="py-20 md:py-32 bg-stone-50">
+      <div className="container mx-auto px-4 md:px-8">
 
         {/* Header */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-6 mb-12">
-          <div className="text-center sm:text-left">
-            <h2 className="text-3xl font-bold tracking-tight text-primary font-headline md:text-4xl">
-              Traveler Gallery
+        <div className="flex flex-col sm:flex-row animate-fade-in-up items-center justify-between gap-6 mb-16">
+          <div className="text-center sm:text-left max-w-2xl">
+            <h2 className="text-4xl font-extrabold tracking-tight text-slate-900 font-headline md:text-5xl">
+              Traveler <span className="text-primary">Gallery</span>
             </h2>
-            <p className="mt-2 text-muted-foreground max-w-lg">
+            <p className="mt-4 text-xl text-slate-600 font-medium">
               Real moments captured by real travelers across Pakistan.
               Share your HD photos and inspire the world.
             </p>
-            <div className="flex items-center gap-2 mt-2 text-amber-500 text-sm font-medium">
-              <Star className="w-4 h-4 fill-amber-500" />
+            <div className="flex items-center justify-center sm:justify-start gap-2 mt-4 text-amber-500 text-sm font-bold uppercase tracking-wider">
+              <Star className="w-5 h-5 fill-amber-500" />
               <span>{allPhotos.length} photos shared by our community</span>
             </div>
           </div>
@@ -474,7 +477,7 @@ export default function VisualGallerySection() {
               setShowUpload(true);
             }}
             size="lg"
-            className="gap-2 shadow-lg hover:shadow-primary/20 transition-shadow shrink-0"
+            className="gap-2 shadow-xl shadow-primary/20 hover:shadow-primary/40 rounded-full h-14 px-8 text-lg shrink-0 transition-all font-bold"
           >
             <Camera className="w-5 h-5" />
             Share Your Photo
@@ -482,7 +485,7 @@ export default function VisualGallerySection() {
         </div>
 
         {/* Masonry Grid */}
-        <div className="columns-2 md:columns-3 gap-4 space-y-4">
+        <div className="columns-2 md:columns-3 gap-6 space-y-6">
           {allPhotos.map((photo, i) => (
             <button
               key={photo.id}
@@ -494,9 +497,11 @@ export default function VisualGallerySection() {
               }}
               aria-label={`Open photo by ${photo.name} from ${photo.location}`}
             >
-              <img
+              <Image
                 src={photo.dataUrl}
                 alt={photo.caption}
+                width={600}
+                height={400}
                 className="w-full h-auto object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
                 loading="lazy"
               />
@@ -562,6 +567,7 @@ export default function VisualGallerySection() {
           returnFocusRef={lightboxReturnFocusRef}
         />
       )}
-    </section>
+      </section>
+    </ImageKitProvider>
   );
 }
