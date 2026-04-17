@@ -21,8 +21,8 @@ export async function generateStaticParams() {
   return paths;
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const { slug } = params;
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
   const district = provinces
     .flatMap((p) => p.districts)
     .find((d) => d.slug === slug);
@@ -39,8 +39,8 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   };
 }
 
-export default function DistrictPage({ params }: { params: { slug: string } }) {
-  const { slug } = params;
+export default async function DistrictPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
   const district = provinces
     .flatMap((p) => p.districts)
     .find((d) => d.slug === slug);
