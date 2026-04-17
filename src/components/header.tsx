@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import {
   Menu, Search, Home, Map,
-  ImageIcon, Compass, CloudSun, Target, BookOpen, Info
+  ImageIcon, Compass, CloudSun, Target, BookOpen, Info, Camera
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet';
@@ -16,6 +16,7 @@ const navLinks = [
   { href: '/', label: 'Home', icon: Home },
   { href: '/#provinces', label: 'Provinces', icon: Compass },
   { href: '/map', label: 'Map', icon: Map },
+  { href: '/virtual-tour', label: 'Virtual Tour', icon: Camera },
   { href: '/gallery', label: 'Gallery', icon: ImageIcon },
   { href: '/weather', label: 'Weather', icon: CloudSun },
   { href: '/blog', label: 'Blog', icon: BookOpen },
